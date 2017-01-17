@@ -6,16 +6,14 @@ package de.bytefish.fcmjava.client.tests.interceptors.response.utils;
 import de.bytefish.fcmjava.client.interceptors.response.utils.RetryHeaderUtils;
 import de.bytefish.fcmjava.client.utils.DateUtils;
 import de.bytefish.fcmjava.client.utils.OutParameter;
+import java.time.Duration;
+import java.time.format.DateTimeFormatter;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-
-import java.time.Duration;
-import java.time.format.DateTimeFormatter;
-
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -38,7 +36,7 @@ public class RetryHeaderUtilsTest {
                 .thenReturn(null);
 
         // Holds the Result:
-        OutParameter<Duration> result = new OutParameter<>();
+        OutParameter<Duration> result = new OutParameter<Duration>();
 
         // Try to get the Result:
         boolean success = RetryHeaderUtils.tryDetermineRetryDelay(httpResponseMock, result);
@@ -57,7 +55,7 @@ public class RetryHeaderUtilsTest {
                 .thenReturn(headerMock);
 
         // Holds the Result:
-        OutParameter<Duration> result = new OutParameter<>();
+        OutParameter<Duration> result = new OutParameter<Duration>();
 
         // Try to get the Result:
         boolean success = RetryHeaderUtils.tryDetermineRetryDelay(httpResponseMock, result);
@@ -76,7 +74,7 @@ public class RetryHeaderUtilsTest {
                 .thenReturn(headerMock);
 
         // Holds the Result:
-        OutParameter<Duration> result = new OutParameter<>();
+        OutParameter<Duration> result = new OutParameter<Duration>();
 
         // Try to get the Result:
         boolean success = RetryHeaderUtils.tryDetermineRetryDelay(httpResponseMock, result);
@@ -102,7 +100,7 @@ public class RetryHeaderUtilsTest {
                 .thenReturn(headerMock);
 
         // Holds the Result:
-        OutParameter<Duration> result = new OutParameter<>();
+        OutParameter<Duration> result = new OutParameter<Duration>();
 
         // Try to get the Result:
         boolean success = RetryHeaderUtils.tryDetermineRetryDelay(httpResponseMock, result);
@@ -123,7 +121,7 @@ public class RetryHeaderUtilsTest {
                 .thenReturn(headerMock);
 
         // Holds the Result:
-        OutParameter<Duration> result = new OutParameter<>();
+        OutParameter<Duration> result = new OutParameter<Duration>();
 
         // Try to get the Result:
         boolean success = RetryHeaderUtils.tryDetermineRetryDelay(httpResponseMock, result);

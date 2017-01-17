@@ -6,8 +6,6 @@ package de.bytefish.fcmjava.client.retry.strategy;
 import de.bytefish.fcmjava.client.functional.Action0;
 import de.bytefish.fcmjava.client.functional.Func1;
 import de.bytefish.fcmjava.exceptions.FcmRetryAfterException;
-import de.bytefish.fcmjava.http.options.IFcmClientSettings;
-
 import java.time.Duration;
 
 /**
@@ -27,12 +25,19 @@ public class SimpleRetryStrategy implements IRetryStrategy {
     }
 
     @Override
-    public void doWithRetry(Action0 action) {
-        getWithRetry(() -> {
-            action.invoke();
-
-            return null;
-        });
+    public void doWithRetry(final Action0 action) {
+        getWithRetry(new Func1<Action0>() {
+			@Override
+			public Action0 invoke() {
+				action.invoke();
+				return null;
+			}
+		});
+//		getWithRetry(() -> {
+//            action.invoke();
+//
+//            return null;
+//        });
     }
 
     @Override

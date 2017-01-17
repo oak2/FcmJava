@@ -5,16 +5,14 @@ package de.bytefish.fcmjava.requests.groups;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
 import de.bytefish.fcmjava.model.options.FcmMessageOptions;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class AddDeviceGroupMessageTest {
 
@@ -67,7 +65,7 @@ public class AddDeviceGroupMessageTest {
         Assert.assertEquals("add", map.get("operation"));
 
         // Check TTL:
-        Assert.assertEquals(3600, (int) map.get("time_to_live"));
+        Assert.assertEquals(3600L, ((Integer) map.get("time_to_live")).longValue());
 
         // Check CollapseKey:
         Assert.assertEquals("collapse", map.get("collapse_key"));

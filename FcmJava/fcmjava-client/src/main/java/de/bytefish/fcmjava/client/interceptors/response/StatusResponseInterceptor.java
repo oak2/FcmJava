@@ -4,15 +4,12 @@
 package de.bytefish.fcmjava.client.interceptors.response;
 
 import de.bytefish.fcmjava.client.interceptors.response.utils.RetryHeaderUtils;
-import de.bytefish.fcmjava.client.utils.DateUtils;
 import de.bytefish.fcmjava.client.utils.OutParameter;
 import de.bytefish.fcmjava.exceptions.*;
-import org.apache.http.*;
-import org.apache.http.protocol.HttpContext;
-
 import java.io.IOException;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
+import org.apache.http.*;
+import org.apache.http.protocol.HttpContext;
 
 public class StatusResponseInterceptor implements HttpResponseInterceptor {
 
@@ -53,7 +50,7 @@ public class StatusResponseInterceptor implements HttpResponseInterceptor {
         if (httpStatusCode >= 500 && httpStatusCode < 600) {
 
             // Holds the Duration, which has been sent by the Server:
-            OutParameter<Duration> result = new OutParameter<>();
+            OutParameter<Duration> result = new OutParameter<Duration>();
 
             // Try to determine the next interval we can send at:
             if (RetryHeaderUtils.tryDetermineRetryDelay(httpResponse, result)) {

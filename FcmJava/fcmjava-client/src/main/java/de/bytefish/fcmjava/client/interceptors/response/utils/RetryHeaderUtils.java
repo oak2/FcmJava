@@ -6,13 +6,12 @@ package de.bytefish.fcmjava.client.interceptors.response.utils;
 import de.bytefish.fcmjava.client.utils.DateUtils;
 import de.bytefish.fcmjava.client.utils.OutParameter;
 import de.bytefish.fcmjava.client.utils.StringUtils;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-
 import java.time.Duration;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
 
 public class RetryHeaderUtils {
 
@@ -58,7 +57,7 @@ public class RetryHeaderUtils {
     private static boolean tryGetFromLong(String retryDelayAsString, OutParameter<Duration> result) {
 
         // Try to convert the String to a Long:
-        OutParameter<Long> longResult = new OutParameter<>();
+        OutParameter<Long> longResult = new OutParameter<Long>();
 
         if(!tryConvertToLong(retryDelayAsString, longResult)) {
             return false;
@@ -86,7 +85,7 @@ public class RetryHeaderUtils {
     private static boolean tryGetFromDate(String dateAsString, OutParameter<Duration> result) {
 
         // Try to convert the String to a RFC1123-compliant Zoned DateTime
-        OutParameter<ZonedDateTime> resultDate = new OutParameter<>();
+        OutParameter<ZonedDateTime> resultDate = new OutParameter<ZonedDateTime>();
 
         if(!tryToConvertToDate(dateAsString, resultDate)) {
             return false;

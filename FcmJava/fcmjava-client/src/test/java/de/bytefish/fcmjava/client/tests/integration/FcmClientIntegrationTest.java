@@ -11,12 +11,11 @@ import de.bytefish.fcmjava.model.topics.Topic;
 import de.bytefish.fcmjava.requests.data.DataMulticastMessage;
 import de.bytefish.fcmjava.requests.topic.TopicUnicastMessage;
 import de.bytefish.fcmjava.responses.FcmMessageResponse;
+import java.time.Duration;
+import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import java.time.Duration;
-import java.util.ArrayList;
 
 public class FcmClientIntegrationTest {
 
@@ -69,7 +68,7 @@ public class FcmClientIntegrationTest {
                 .setTimeToLive(Duration.ofHours(1))
                 .build();
 
-        ArrayList<String> registrationIds = new ArrayList<>();
+        ArrayList<String> registrationIds = new ArrayList<String>();
         registrationIds.add("invalid_key");
 
         // Send a Message:
